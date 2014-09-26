@@ -41,7 +41,10 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'MVC Principles','Explain MVC principles, and why they are important?','','2014-09-25 22:30:16'),(2,'Unit Testing','What constitutes a good unit test?','','2014-09-25 22:30:37'),(3,'Roadblocks','You are required to work with a huge chunk of code and you have no idea how it works and there’s no documentation and no tests. What steps do you take?','','2014-09-25 22:32:41');
+INSERT INTO `questions` VALUES 
+(1,'MVC Principles','Explain MVC principles, and why they are important?','MVC - model-controller-view is a pattern for building applications. The main goal is to separate the functions which are working with data from thier views. In scheme it look like: User uses Controller, Controller manipulated Model, Model updates View, User sees View Well designed MVC application allow frontend and backend developers working on each part(frontend/backend) separetely. Model is working with data, change the states of these data, however does not know about views of these data. Views only showing the data Controller provides a link between user and the system and uses the model to implement the necessary reaction. Well designed MVC application allow frontend and backend developers working on each part(frontend/backend) separetely.','2014-09-25 22:30:16'),
+(2,'Unit Testing','What constitutes a good unit test?','Good unit test should be reliable, easy to maintain, not depend on the environment in which they are performed,  easy to read and easy to understand, observe a single naming convention, regularly run in automatic mode.','2014-09-25 22:30:37'),
+(3,'Roadblocks','You are required to work with a huge chunk of code and you have no idea how it works and there’s no documentation and no tests. What steps do you take?','Steps are really depends on the developer\'s tasks. For example, the code is working not correctly and I need to figure out the issue and fix without any refactoting, then it can be done via die(var_dump()) or debugger.','2014-09-25 22:32:41');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
