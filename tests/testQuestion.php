@@ -58,4 +58,11 @@ class QuestionTest extends PHPUnit_Framework_TestCase
         $this->assertNotEmpty(\interview\Question::getAnswerById(3, new \interview\Database));
     }
     //--------------------------------------------------------------------------
+
+
+    public function testQuestionsNameWithFailure()
+    {
+        $this->assertEmpty(\interview\Question::getNameById(1, new \interview\Database));
+    }
+    //--------------------------------------------------------------------------
 }
