@@ -6,11 +6,11 @@ class Config_Database
 {
 
     private $credentials = array(
-        'host'     => 'localhost',
+        'host'     => '127.0.0.1',
         'port'     => NULL,
         'database' => 'interview',
-        'user'     => 'questions',
-        'pass'     => 'answers'
+        'user'     => 'root',
+        'pass'     => ''
     );
 
     public function getHost()
@@ -20,7 +20,7 @@ class Config_Database
     //--------------------------------------------------------------------------
 
 
-    public function getPort{
+    public function getPort(){
         return $this->credentials['port'];
     }
     //--------------------------------------------------------------------------
