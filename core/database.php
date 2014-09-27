@@ -2,9 +2,11 @@
 
 namespace interview;
 
+/**
+ * Database class.
+ */
 class Database 
 {
-
     protected $link;
     protected $connected;
 
@@ -102,5 +104,4 @@ class Database
         return $results;
 
     }
-
 }

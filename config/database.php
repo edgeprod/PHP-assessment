@@ -2,6 +2,9 @@
 
 namespace interview;
 
+/**
+ * Database config class.
+ */
 class Config_Database
 {
 
