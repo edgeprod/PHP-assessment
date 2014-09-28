@@ -1,8 +1,8 @@
 <?php
 
-namespace interview;
+namespace Interview;
 
-class Config_Database
+class ConfigDatabase
 {
 
     private $credentials = array(
@@ -17,12 +17,15 @@ class Config_Database
     {
         return $this->credentials['host'];
     }
+
     //--------------------------------------------------------------------------
 
 
-    public function getPort{
+    public function getPort()
+    {
         return $this->credentials['port'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -30,6 +33,7 @@ class Config_Database
     {
         return $this->credentials['database'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -37,6 +41,7 @@ class Config_Database
     {
         return $this->credentials['user'];
     }
+
     //--------------------------------------------------------------------------
 
 
