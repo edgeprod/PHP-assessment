@@ -8,6 +8,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
     {
         $this->assertClassHasAttribute('credentials', '\Interview\ConfigDatabase');
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -15,6 +16,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('\Interview\Logging', new \Interview\Logging);
     }
+
     //--------------------------------------------------------------------------
 
 

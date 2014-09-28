@@ -16,7 +16,7 @@ class Question
 
     public function __construct($questionId, Database $db)
     {
-        $sql  = "SELECT * FROM `$this->tableName` WHERE `id` = '" . $questionId . "' LIMIT 1;";
+        $sql = "SELECT * FROM `$this->tableName` WHERE `id` = '" . $questionId . "' LIMIT 1;";
 
         $result = $db->getArray($sql);
 
@@ -26,6 +26,7 @@ class Question
         $this->answer  = $result[0]['answer'];
         $this->created = $result[0]['created'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -36,6 +37,7 @@ class Question
 
         return $result[0]['name'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -46,6 +48,7 @@ class Question
 
         return $result[0]['text'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -56,6 +59,7 @@ class Question
 
         return $result[0]['answer'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -66,6 +70,7 @@ class Question
 
         return $result[0]['created'];
     }
+
     //--------------------------------------------------------------------------
 
 

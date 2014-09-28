@@ -8,6 +8,7 @@ class QuestionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('\Interview\Question', new \Interview\Question(1, new \Interview\Database));
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -20,6 +21,7 @@ class QuestionTest extends PHPUnit_Framework_TestCase
         $this->assertNotEmpty($question->answer);
         $this->assertNotEmpty($question->created);
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -27,6 +29,7 @@ class QuestionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNotEmpty(\Interview\Question::getNameById(1, new \Interview\Database));
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -34,6 +37,7 @@ class QuestionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNotEmpty(\Interview\Question::getTextById(1, new \Interview\Database));
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -41,6 +45,7 @@ class QuestionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNotEmpty(\Interview\Question::getAnswerById(1, new \Interview\Database));
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -48,6 +53,7 @@ class QuestionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNotEmpty(\Interview\Question::getCreatedById(1, new \Interview\Database));
     }
+
     //--------------------------------------------------------------------------
 
 

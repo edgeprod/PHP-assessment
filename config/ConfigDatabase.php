@@ -17,6 +17,7 @@ class ConfigDatabase
     {
         return $this->credentials['host'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -24,6 +25,7 @@ class ConfigDatabase
     {
         return $this->credentials['port'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -31,6 +33,7 @@ class ConfigDatabase
     {
         return $this->credentials['database'];
     }
+
     //--------------------------------------------------------------------------
 
 
@@ -38,6 +41,7 @@ class ConfigDatabase
     {
         return $this->credentials['user'];
     }
+
     //--------------------------------------------------------------------------
 
 

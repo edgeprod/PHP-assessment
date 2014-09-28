@@ -24,12 +24,13 @@ class Database
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
+
     //--------------------------------------------------------------------------
 
 
     public function insert($tableName, $columns, $data, $ignore = false)
     {
-        $statement  = "INSERT";
+        $statement = "INSERT";
 
         if ($ignore) {
             $statement .= " IGNORE";
@@ -39,7 +40,9 @@ class Database
         $statement .= " (";
 
         for ($x = 0; $x < sizeof($columns); $x++) {
-            if ($x > 0) { $statement .= ', '; }
+            if ($x > 0) {
+                $statement .= ', ';
+            }
             $statement .= $columns[$x];
         }
 
@@ -47,7 +50,9 @@ class Database
         $statement .= " values (";
 
         for ($x = 0; $x < sizeof($data); $x++) {
-            if ($x > 0) { $statement .= ', '; }
+            if ($x > 0) {
+                $statement .= ', ';
+            }
             $statement .= "?";
         }
 
@@ -60,12 +65,13 @@ class Database
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
+
     //--------------------------------------------------------------------------
 
 
     public function updateOne($tableName, $column, $data, $where, $condition)
     {
-        $statement  = "UPDATE";
+        $statement = "UPDATE";
 
         $statement .= " `" . $tableName . "`";
         $statement .= " SET `";
@@ -83,6 +89,7 @@ class Database
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
+
     //--------------------------------------------------------------------------
 
 
