@@ -1,6 +1,6 @@
 <?php
 
-namespace interview;
+namespace Interview;
 
 class Question
 {
