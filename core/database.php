@@ -2,12 +2,14 @@
 
 namespace interview;
 
-class Database {
+class Database
+{
     protected $link;
     protected $connected;
 
-    public function __construct() {
-        $credentials = new Config_Database();
+    public function __construct()
+    {
+        $credentials = new ConfigDatabase();
 
         try {
             $this->link = new \PDO(

@@ -2,7 +2,7 @@
 
 namespace interview;
 
-class Config_Database
+class ConfigDatabase
 {
 
     private $credentials = array(
