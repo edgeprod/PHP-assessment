@@ -18,7 +18,6 @@ class QuestionTest extends PHPUnit_Framework_TestCase
         $this->assertNotEmpty($question->text);
         $this->assertNotEmpty($question->answer);
         $this->assertNotEmpty($question->created);
-        exit;
     }
     //--------------------------------------------------------------------------
 
