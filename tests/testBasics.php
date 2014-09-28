@@ -20,5 +20,4 @@ class BasicTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('\interview\Database', new \interview\Database);
     }
-
 }

@@ -2,9 +2,13 @@
 
 namespace interview;
 
+/**
+ * Questions class, holding the model
+ * -> methods, for interacting with the 
+ * -> database.
+ */
 class Question
 {
-
     public $id;
     public $name;
     public $text;
@@ -82,5 +86,4 @@ class Question
 
         return true;
     }
-
 }
