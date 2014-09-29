@@ -4,7 +4,6 @@ namespace interview;
 
 class Config_Database
 {
-
     private $credentials = array(
         'host'     => 'localhost',
         'port'     => NULL,
@@ -20,7 +19,8 @@ class Config_Database
     //--------------------------------------------------------------------------
 
 
-    public function getPort{
+    public function getPort()
+    {
         return $this->credentials['port'];
     }
     //--------------------------------------------------------------------------
