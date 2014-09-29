@@ -15,10 +15,10 @@ class QuestionTest extends PHPUnit_Framework_TestCase
     {
         $question = new \interview\Question(1, new \interview\Database);
 
-        //$this->assertNotEmpty($question->name);
-        //$this->assertNotEmpty($question->text);
-        //$this->assertNotEmpty($question->answer);
-        //$this->assertNotEmpty($question->created);
+        $this->assertNotEmpty($question->name);
+        $this->assertNotEmpty($question->text);
+        $this->assertNotEmpty($question->answer);
+        $this->assertNotEmpty($question->created);
     }
     //--------------------------------------------------------------------------
 
