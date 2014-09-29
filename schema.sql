@@ -41,7 +41,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'MVC Principles','Explain MVC principles, and why they are important?','','2014-09-25 22:30:16'),(2,'Unit Testing','What constitutes a good unit test?','','2014-09-25 22:30:37'),(3,'Roadblocks','You are required to work with a huge chunk of code and you have no idea how it works and there’s no documentation and no tests. What steps do you take?','','2014-09-25 22:32:41');
+INSERT INTO `questions` VALUES (1,'MVC Principles','Explain MVC principles, and why they are important?','MVC is Model View Controller. Its aim is to separate the control, presentation and data. ','2014-09-25 22:30:16'),(2,'Unit Testing','What constitutes a good unit test?','Which covers all the working flows','2014-09-25 22:30:37'),(3,'Roadblocks','You are required to work with a huge chunk of code and you have no idea how it works and there’s no documentation and no tests. What steps do you take?','First i run the code to get a feel and then i check and run the functionality assigned to me to work on. ','2014-09-25 22:32:41');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
