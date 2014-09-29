@@ -24,7 +24,7 @@ class Question
         $this->name    = $result[0]['name'];
         $this->text    = $result[0]['text'];
         $this->answer  = $result[0]['answer'];
-        $this->created = $result['created'];
+        $this->created = $result[0]['created'];
     }
     //--------------------------------------------------------------------------
 
