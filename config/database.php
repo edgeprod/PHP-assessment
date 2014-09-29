@@ -8,9 +8,9 @@ class Config_Database
     private $credentials = array(
         'host'     => 'localhost',
         'port'     => NULL,
-        'database' => 'interview',
-        'user'     => 'questions',
-        'pass'     => 'answers'
+        'database' => 'd',
+        'user'     => 'root',
+        'pass'     => 'root_access'
     );
 
     public function getHost()
@@ -20,7 +20,8 @@ class Config_Database
     //--------------------------------------------------------------------------
 
 
-    public function getPort{
+    public function getPort()
+    {
         return $this->credentials['port'];
     }
     //--------------------------------------------------------------------------
