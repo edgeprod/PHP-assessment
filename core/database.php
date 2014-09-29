@@ -1,33 +1,52 @@
 <?php
 
 namespace interview;
+use \PDO;
 
-class Database {
+/**
+ * Database class.
+ */
+class Database 
+{
     protected $link;
     protected $connected;
 
-    public function __construct() {
+    /**
+     * Initialize PDO object
+     */
+    public function __construct() 
+    {
         $credentials = new Config_Database();
 
         try {
-            $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+            $this->link = new PDO(
+                'mysql:host=' . $credentials->getHost() . '; dbname=' . $credentials->getDatabase(),
                 $credentials->getUser(),
                 $credentials->getPass(),
                 array(
                     \PDO::ATTR_EMULATE_PREPARES => false,
-                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION)
+                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION
+                )
             );
+
         } catch (\PDOException $e) {
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
-    //--------------------------------------------------------------------------
 
-
+    /**
+     * This method insert rows in table
+     *
+     * @method insert
+     * @params string  $tableName
+     * @params array   $columns
+     * @params array   $data
+     * @params boolean $ignore
+     * @return void
+     */
     public function insert($tableName, $columns, $data, $ignore = false)
     {
-        $statement  = "INSERT";
+        $statement = "INSERT";
 
         if ($ignore) {
             $statement .= " IGNORE";
@@ -58,20 +77,26 @@ class Database {
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
-    //--------------------------------------------------------------------------
 
-
+    /**
+     * This method update single row
+     *
+     * @method updateOne
+     * @params string $tableName
+     * @params string $column
+     * @params string $data
+     * @params string $where
+     * @params string $condition
+     * @return void
+     */
     public function updateOne($tableName, $column, $data, $where, $condition)
     {
         $statement  = "UPDATE";
-
         $statement .= " `" . $tableName . "`";
         $statement .= " SET `";
-
         $statement .= $column . "`";
         $statement .= ' = ';
         $statement .= "?";
-
         $statement .= " WHERE `" . $where . "` = ?";
 
         try {
@@ -81,9 +106,14 @@ class Database {
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
-    //--------------------------------------------------------------------------
 
-
+    /**
+     * Get result in array format
+     *
+     * @method getArray
+     * $params mixed $statement
+     * @return boolean | array
+     */
     public function getArray($statement)
     {
         try {
@@ -93,11 +123,10 @@ class Database {
             Logging::logDBErrorAndExit($e->getMessage());
         }
 
-        if (!empty($results)) {
+        if (empty($results)) {
             return false;
         }
 
         return $results;
     }
-    //--------------------------------------------------------------------------
 }
