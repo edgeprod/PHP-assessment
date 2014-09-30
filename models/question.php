@@ -6,7 +6,7 @@ class Question
 {
 
     public $id;
-    protected $name;
+    public $name;
     public $text;
     public $answer;
     public $created;
@@ -44,7 +44,7 @@ class Question
         $sql = "SELECT `text` FROM `" . self::TABLENAME . "` WHERE `id` = '" . $questionId . "' LIMIT 1;";
         $result = $db->getArray($sql);
 
-        return $this->text;
+        return $result[0]['text'];
     }
     //--------------------------------------------------------------------------
 
