@@ -41,7 +41,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'MVC Principles','Explain MVC principles, and why they are important?','','2014-09-25 22:30:16'),(2,'Unit Testing','What constitutes a good unit test?','','2014-09-25 22:30:37'),(3,'Roadblocks','You are required to work with a huge chunk of code and you have no idea how it works and there’s no documentation and no tests. What steps do you take?','','2014-09-25 22:32:41');
+INSERT INTO `questions` VALUES (1,'MVC Principles','Explain MVC principles, and why they are important?','Model–view–controller (MVC) is a software architectural pattern for implementing user interfaces. It divides a given software application into three interconnected parts, so as to separate internal representations of information from the ways that information is presented to or accepted from the user.','2014-09-25 22:30:16'),(2,'Unit Testing','What constitutes a good unit test?','PHP Unit Testing Framework is a unit testing framework that enables developers to discover bugs and in turn drive down the costs associated with developing PHP software.','2014-09-25 22:30:37'),(3,'Roadblocks','You are required to work with a huge chunk of code and you have no idea how it works and there’s no documentation and no tests. What steps do you take?','In that case I will find out the workflow of the application and then follow the codes','2014-09-25 22:32:41');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
