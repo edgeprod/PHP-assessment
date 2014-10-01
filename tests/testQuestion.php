@@ -14,7 +14,6 @@ class QuestionTest extends PHPUnit_Framework_TestCase
     public function testInstantiationById()
     {
         $question = new \interview\Question(1, new \interview\Database);
-
         $this->assertNotEmpty($question->name);
         $this->assertNotEmpty($question->text);
         $this->assertNotEmpty($question->answer);
