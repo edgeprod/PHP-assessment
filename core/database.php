@@ -11,7 +11,7 @@ class Database {
 
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase(),
                 $credentials->getUser(),
                 $credentials->getPass(),
                 array(
