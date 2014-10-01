@@ -26,3 +26,6 @@ Instructions
     not be merged but will signal your completion of the skills assessment.
 
 Please ask for clarification if you have a question. Guessing an answer to an ambiguous directive will count against you.
+
+
+Thank you, I have completed assessment

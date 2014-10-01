@@ -11,7 +11,7 @@ class Database {
 
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase(),
                 $credentials->getUser(),
                 $credentials->getPass(),
                 array(
@@ -88,12 +88,14 @@ class Database {
     {
         try {
             $sql = $this->link->query($statement);
+
             $results = $sql->fetchAll(\PDO::FETCH_ASSOC);
+
         } catch (\PDOException $e) {
             Logging::logDBErrorAndExit($e->getMessage());
         }
 
-        if (!empty($results)) {
+        if (empty($results)) {
             return false;
         }
 
