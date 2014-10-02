@@ -73,7 +73,7 @@ class Question
     {
         $columns = array(
             'name',
-            'text'
+            'text',
             'answer'
         );
 

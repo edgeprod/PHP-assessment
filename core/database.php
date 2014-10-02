@@ -3,6 +3,7 @@
 namespace interview;
 
 class Database {
+    
     protected $link;
     protected $connected;
 
