@@ -6,7 +6,7 @@ class Question
 {
 
     public $id;
-    protected $name;
+    public $name;
     public $text;
     public $answer;
     public $created;
