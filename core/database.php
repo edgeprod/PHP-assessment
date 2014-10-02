@@ -11,7 +11,7 @@ class Database {
 
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase(),
                 $credentials->getUser(),
                 $credentials->getPass(),
                 array(
@@ -37,7 +37,9 @@ class Database {
         $statement .= " (";
 
         for ($x = 0; $x < sizeof($columns); $x++) {
-            if ($x > 0) { $statement .= ', '; }
+            if ($x > 0) {
+                $statement .= ', ';
+            }
             $statement .= $columns[$x];
         }
 
@@ -45,7 +47,9 @@ class Database {
         $statement .= " values (";
 
         for ($x = 0; $x < sizeof($data); $x++) {
-            if ($x > 0) { $statement .= ', '; }
+            if ($x > 0) {
+                $statement .= ', ';
+            }
             $statement .= "?";
         }
 
@@ -93,7 +97,7 @@ class Database {
             Logging::logDBErrorAndExit($e->getMessage());
         }
 
-        if (!empty($results)) {
+        if (empty($results)) {
             return false;
         }
 
