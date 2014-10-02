@@ -1,6 +1,6 @@
 <?php
 
-namespace interview\core;
+namespace interview;
 
 class Database {
     
@@ -12,13 +12,9 @@ class Database {
 
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase(),
                 $credentials->getUser(),
-                $credentials->getPass(),
-                array(
-                    \PDO::ATTR_EMULATE_PREPARES => false,
-                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION)
-            );
+                $credentials->getPass());
         } catch (\PDOException $e) {
             Logging::logDBErrorAndExit($e->getMessage());
         }
@@ -94,10 +90,9 @@ class Database {
             Logging::logDBErrorAndExit($e->getMessage());
         }
 
-        if (!empty($results)) {
+        if (empty($results)) {
             return false;
         }
-
         return $results;
     }
     //--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-namespace interview\core;
+namespace interview;
 
 class Logging {
     

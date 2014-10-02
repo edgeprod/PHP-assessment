@@ -26,3 +26,33 @@ Instructions
     not be merged but will signal your completion of the skills assessment.
 
 Please ask for clarification if you have a question. Guessing an answer to an ambiguous directive will count against you.
+
+Test Result:
+
+- testBasics.php
+Time: 17 ms, Memory: 4.25Mb
+
+OK (3 tests, 3 assertions)
+
+-- testQuestion.php
+Time: 130 ms, Memory: 6.00Mb
+
+There were 3 failures:
+
+1) QuestionTest::testInstantiationById
+Failed asserting that a string is not empty.
+
+C:\Users\Administrator\PHP-assessment\tests\testQuestion.php:20
+
+2) QuestionTest::testStaticGetAnswerById
+Failed asserting that a string is not empty.
+
+C:\Users\Administrator\PHP-assessment\tests\testQuestion.php:42
+
+3) QuestionTest::testQuestionsAnswered
+Failed asserting that a string is not empty.
+
+C:\Users\Administrator\PHP-assessment\tests\testQuestion.php:56
+
+FAILURES!
+Tests: 7, Assertions: 9, Failures: 3.

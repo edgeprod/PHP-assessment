@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "../boot.php";
+require_once __DIR__ . "/../boot.php";
 
 class BasicTest extends PHPUnit_Framework_TestCase
 {

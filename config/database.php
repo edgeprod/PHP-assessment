@@ -1,12 +1,12 @@
 <?php
 
-namespace interview\config;
+namespace interview;
 
 class Config_Database
 {
 
     private $credentials = array(
-        'host'     => 'localhost',
+        'host'     => '127.0.0.1',
         'port'     => NULL,
         'database' => 'interview',
         'user'     => 'root',
