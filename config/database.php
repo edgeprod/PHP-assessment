@@ -9,8 +9,8 @@ class Config_Database
         'host'     => 'localhost',
         'port'     => NULL,
         'database' => 'interview',
-        'user'     => 'questions',
-        'pass'     => 'answers'
+        'user'     => '',
+        'pass'     => 'root'
     );
 
     public function getHost()
@@ -20,7 +20,8 @@ class Config_Database
     //--------------------------------------------------------------------------
 
 
-    public function getPort{
+    public function getPort()
+    {
         return $this->credentials['port'];
     }
     //--------------------------------------------------------------------------
@@ -46,3 +47,5 @@ class Config_Database
     }
     //--------------------------------------------------------------------------
 }
+
+
