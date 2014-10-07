@@ -8,10 +8,9 @@ class Database {
 
     public function __construct() {
         $credentials = new Config_Database();
-
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase(),
                 $credentials->getUser(),
                 $credentials->getPass(),
                 array(
@@ -86,18 +85,21 @@ class Database {
 
     public function getArray($statement)
     {
+		
         try {
             $sql = $this->link->query($statement);
+			//var_dump($sql);exit;
             $results = $sql->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
+			var_dump($e->getMessage());exit;
             Logging::logDBErrorAndExit($e->getMessage());
         }
-
+		//var_dump($results);exit;
         if (!empty($results)) {
-            return false;
+            return $results;
         }
 
-        return $results;
+        return false;
     }
     //--------------------------------------------------------------------------
 }
