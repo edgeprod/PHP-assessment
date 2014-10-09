@@ -2,21 +2,24 @@
 
 namespace interview;
 
-class Database {
+class Database
+{
     protected $link;
     protected $connected;
 
-    public function __construct() {
+    public function __construct()
+    {
         $credentials = new Config_Database();
 
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase() . ';port=' . $credentials->getPort(),
                 $credentials->getUser(),
                 $credentials->getPass(),
                 array(
                     \PDO::ATTR_EMULATE_PREPARES => false,
-                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION)
+                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION
+                )
             );
         } catch (\PDOException $e) {
             Logging::logDBErrorAndExit($e->getMessage());
@@ -37,7 +40,9 @@ class Database {
         $statement .= " (";
 
         for ($x = 0; $x < sizeof($columns); $x++) {
-            if ($x > 0) { $statement .= ', '; }
+            if ($x > 0) {
+                $statement .= ', '; 
+            }
             $statement .= $columns[$x];
         }
 
@@ -45,7 +50,9 @@ class Database {
         $statement .= " values (";
 
         for ($x = 0; $x < sizeof($data); $x++) {
-            if ($x > 0) { $statement .= ', '; }
+            if ($x > 0) { 
+                $statement .= ', '; 
+            }
             $statement .= "?";
         }
 
@@ -93,7 +100,7 @@ class Database {
             Logging::logDBErrorAndExit($e->getMessage());
         }
 
-        if (!empty($results)) {
+        if (empty($results)) {
             return false;
         }
 
