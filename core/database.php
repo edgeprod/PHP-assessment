@@ -2,7 +2,8 @@
 
 namespace interview;
 
-class Database {
+class Database
+{
     protected $link;
     protected $connected;
 
@@ -11,7 +12,7 @@ class Database {
 
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:dbname='.$credentials->getDatabase().';host='.$credentials->getHost().';port='.$credentials->getPort(),
                 $credentials->getUser(),
                 $credentials->getPass(),
                 array(
@@ -28,11 +29,9 @@ class Database {
     public function insert($tableName, $columns, $data, $ignore = false)
     {
         $statement  = "INSERT";
-
         if ($ignore) {
             $statement .= " IGNORE";
         }
-
         $statement .= " INTO `" . $tableName . "`";
         $statement .= " (";
 
@@ -64,14 +63,11 @@ class Database {
     public function updateOne($tableName, $column, $data, $where, $condition)
     {
         $statement  = "UPDATE";
-
         $statement .= " `" . $tableName . "`";
         $statement .= " SET `";
-
         $statement .= $column . "`";
         $statement .= ' = ';
         $statement .= "?";
-
         $statement .= " WHERE `" . $where . "` = ?";
 
         try {
@@ -93,7 +89,7 @@ class Database {
             Logging::logDBErrorAndExit($e->getMessage());
         }
 
-        if (!empty($results)) {
+        if (empty($results)) {
             return false;
         }
 
