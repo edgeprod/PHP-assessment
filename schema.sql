@@ -55,3 +55,13 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2014-09-25 23:03:41
+
+--
+-- Updating data for table `questions`
+--
+
+UPDATE `interview`.`questions` SET `answer` = 'MVC Pattern stands for Model-View-Controller Pattern where Model - Model represents an object or JAVA POJO carrying data. It can also have logic to update controller if its data changes. View - View represents the visualization of the data that model contains. Controller - Controller acts on both Model and view. It controls the data flow into model object and updates the view whenever data changes. It keeps View and Model separate. ' WHERE `questions`.`id` = 1;
+UPDATE `interview`.`questions` SET `answer` = 'Able to be fully automated Has full control over all the pieces running (Use mocks or stubs to achieve this isolation when needed) Can be run in any order if part of many other tests Runs in memory (no DB or File access, for example) Consistently returns the same result (You always run the same test, so no random numbers, for example. save those for integration or range tests) Runs fast Tests a single logical concept in the system Readable Maintainable Trustworthy (when you see its result, you don’t need to debug the code just to be sure)' WHERE `questions`.`id` = 2;
+UPDATE `interview`.`questions` SET `answer` = 'Debug and do line breaks step through the code. Find out the flow of the code, stack trace through to see where the key points are and go from there. ' WHERE `questions`.`id` = 3;
+
+-- Dump completed on 2014-10-11 18:33:41
