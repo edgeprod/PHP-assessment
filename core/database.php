@@ -1,25 +1,25 @@
 <?php
 
-namespace interview;
+namespace interview\Core;;
 
-class Database {
+class Database 
+{
     protected $link;
     protected $connected;
 
-    public function __construct() {
+    public function __construct() 
+    {
         $credentials = new Config_Database();
 
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase() . ';port=' .
+                $credentials->getPort(),
                 $credentials->getUser(),
-                $credentials->getPass(),
-                array(
-                    \PDO::ATTR_EMULATE_PREPARES => false,
-                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION)
+                $credentials->getPass()
             );
         } catch (\PDOException $e) {
-            Logging::logDBErrorAndExit($e->getMessage());
+            \Interview\Core\Logging::logDBErrorAndExit($e->getMessage());
         }
     }
     //--------------------------------------------------------------------------
@@ -37,7 +37,9 @@ class Database {
         $statement .= " (";
 
         for ($x = 0; $x < sizeof($columns); $x++) {
-            if ($x > 0) { $statement .= ', '; }
+            if ($x > 0) { 
+                $statement .= ', '; 
+            }
             $statement .= $columns[$x];
         }
 
@@ -45,7 +47,9 @@ class Database {
         $statement .= " values (";
 
         for ($x = 0; $x < sizeof($data); $x++) {
-            if ($x > 0) { $statement .= ', '; }
+            if ($x > 0) {
+                $statement .= ', '; 
+            }
             $statement .= "?";
         }
 
@@ -55,7 +59,7 @@ class Database {
             $insert = $this->link->prepare($statement);
             $insert->execute($data);
         } catch (\PDOException $e) {
-            Logging::logDBErrorAndExit($e->getMessage());
+            \Interview\Core\Logging::logDBErrorAndExit($e->getMessage());
         }
     }
     //--------------------------------------------------------------------------
@@ -78,7 +82,7 @@ class Database {
             $update = $this->link->prepare($statement);
             $update->execute(array($data, $condition));
         } catch (\PDOException $e) {
-            Logging::logDBErrorAndExit($e->getMessage());
+            \Interview\Core\Logging::logDBErrorAndExit($e->getMessage());
         }
     }
     //--------------------------------------------------------------------------
@@ -90,10 +94,10 @@ class Database {
             $sql = $this->link->query($statement);
             $results = $sql->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
-            Logging::logDBErrorAndExit($e->getMessage());
+            \Interview\Core\Logging::logDBErrorAndExit($e->getMessage());
         }
 
-        if (!empty($results)) {
+        if (empty($results)) {
             return false;
         }
 

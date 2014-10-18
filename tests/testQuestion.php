@@ -1,19 +1,19 @@
 <?php
 
-require_once __DIR__ . "/../boot.php";
+require_once __DIR__ . "\..\boot.php";
 
 class QuestionTest extends PHPUnit_Framework_TestCase
 {
     public function testModelLoaded()
     {
-        $this->assertInstanceOf('\interview\Question', new \interview\Question(1, new \interview\Database));
+        $this->assertInstanceOf('\Interview\Models\Question', new \Interview\Models\Question(1, new \Interview\Core\Database));
     }
     //--------------------------------------------------------------------------
 
 
     public function testInstantiationById()
     {
-        $question = new \interview\Question(1, new \interview\Database);
+        $question = new \Interview\Models\Question(1, new \Interview\Core\Database);
 
         $this->assertNotEmpty($question->name);
         $this->assertNotEmpty($question->text);
@@ -25,37 +25,37 @@ class QuestionTest extends PHPUnit_Framework_TestCase
 
     public function testStaticGetNameById()
     {
-        $this->assertNotEmpty(\interview\Question::getNameById(1, new \interview\Database));
+        $this->assertNotEmpty(\Interview\Models\Question::getNameById(1, new \Interview\Core\Database));
     }
     //--------------------------------------------------------------------------
 
 
     public function testStaticGetTextById()
     {
-        $this->assertNotEmpty(\interview\Question::getTextById(1, new \interview\Database));
+        $this->assertNotEmpty(\Interview\Models\Question::getTextById(1, new \Interview\Core\Database));
     }
     //--------------------------------------------------------------------------
 
 
     public function testStaticGetAnswerById()
     {
-        $this->assertNotEmpty(\interview\Question::getAnswerById(1, new \interview\Database));
+        $this->assertNotEmpty(\Interview\Models\Question::getAnswerById(1, new \Interview\Core\Database));
     }
     //--------------------------------------------------------------------------
 
 
     public function testStaticGetCreatedById()
     {
-        $this->assertNotEmpty(\interview\Question::getCreatedById(1, new \interview\Database));
+        $this->assertNotEmpty(\Interview\Models\Question::getCreatedById(1, new \Interview\Core\Database));
     }
     //--------------------------------------------------------------------------
 
 
     public function testQuestionsAnswered()
     {
-        $this->assertNotEmpty(\interview\Question::getAnswerById(1, new \interview\Database));
-        $this->assertNotEmpty(\interview\Question::getAnswerById(2, new \interview\Database));
-        $this->assertNotEmpty(\interview\Question::getAnswerById(3, new \interview\Database));
+        $this->assertNotEmpty(\Interview\Models\Question::getAnswerById(1, new \Interview\Core\Database));
+        $this->assertNotEmpty(\Interview\Models\Question::getAnswerById(2, new \Interview\Core\Database));
+        $this->assertNotEmpty(\Interview\Models\Question::getAnswerById(3, new \Interview\Core\Database));
     }
     //--------------------------------------------------------------------------
 }
