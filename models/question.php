@@ -1,6 +1,6 @@
 <?php
 
-namespace interview;
+namespace Interview\Models;;
 
 class Question
 {
@@ -14,7 +14,7 @@ class Question
     protected $tableName = 'questions';
     const      TABLENAME = 'questions';
 
-    public function __construct($questionId, Database $db)
+    public function __construct($questionId, \Interview\Core\Database $db)
     {
         $sql  = "SELECT * FROM `$this->tableName` WHERE `id` = '" . $questionId . "' LIMIT 1;";
 
@@ -29,7 +29,7 @@ class Question
     //--------------------------------------------------------------------------
 
 
-    public static function getNameById($questionId, Database $db)
+    public static function getNameById($questionId, \Interview\Core\Database $db)
     {
         $sql = "SELECT `name` FROM `" . self::TABLENAME . "` WHERE `id` = '" . $questionId . "' LIMIT 1;";
         $result = $db->getArray($sql);
@@ -39,7 +39,7 @@ class Question
     //--------------------------------------------------------------------------
 
 
-    public static function getTextById($questionId, Database $db)
+    public static function getTextById($questionId, \Interview\Core\Database $db)
     {
         $sql = "SELECT `text` FROM `" . self::TABLENAME . "` WHERE `id` = '" . $questionId . "' LIMIT 1;";
         $result = $db->getArray($sql);
@@ -49,7 +49,7 @@ class Question
     //--------------------------------------------------------------------------
 
 
-    public static function getAnswerById($questionId, Database $db)
+    public static function getAnswerById($questionId, \Interview\Core\Database $db)
     {
         $sql = "SELECT `answer` FROM `" . self::TABLENAME . "` WHERE `id` = '" . $questionId . "' LIMIT 1;";
         $result = $db->getArray($sql);
@@ -59,7 +59,7 @@ class Question
     //--------------------------------------------------------------------------
 
 
-    public static function getCreatedById($questionId, Database $db)
+    public static function getCreatedById($questionId, \Interview\Core\Database $db)
     {
         $sql = "SELECT `created` FROM `" . self::TABLENAME . "` WHERE `id` = '" . $questionId . "' LIMIT 1;";
         $result = $db->getArray($sql);
@@ -69,7 +69,7 @@ class Question
     //--------------------------------------------------------------------------
 
 
-    public static function addQuestion($questionName, $questionText, $questionAnswer, Database $db)
+    public static function addQuestion($questionName, $questionText, $questionAnswer, \Interview\Core\Database $db)
     {
         $columns = array(
             'name',

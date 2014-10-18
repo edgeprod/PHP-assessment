@@ -6,21 +6,21 @@ class BasicTest extends PHPUnit_Framework_TestCase
 {
     public function testConfigLoaded()
     {
-        $this->assertClassHasAttribute('credentials', '\interview\Config_Database');
+        $this->assertClassHasAttribute('credentials', '\interview\Config\Config_Database');
     }
     //--------------------------------------------------------------------------
 
 
     public function testLoggingLoaded()
     {
-        $this->assertInstanceOf('\interview\Logging', new \interview\Logging);
+        $this->assertInstanceOf('\Interview\core\Logging', new \interview\core\Logging);
     }
     //--------------------------------------------------------------------------
 
 
     public function testDatabaseLoaded()
     {
-        $this->assertInstanceOf('\interview\Database', new \interview\Database);
+        $this->assertInstanceOf('\Interview\core\Database', new \interview\core\Database);
     }
     //--------------------------------------------------------------------------
 }

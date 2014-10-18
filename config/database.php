@@ -1,6 +1,6 @@
 <?php
 
-namespace interview;
+namespace interview\Config;
 
 class Config_Database
 {
