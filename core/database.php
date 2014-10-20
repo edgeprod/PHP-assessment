@@ -7,10 +7,11 @@ class Database {
     protected $connected;
 
     public function __construct() {
+
         $credentials = new Config_Database();
 
         try {
-            $this->link = new \PDO(
+         return $this->link = new \PDO(
                 'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
                 $credentials->getUser(),
                 $credentials->getPass(),
