@@ -1,5 +1,5 @@
 Technical Skills Assessment (PHP)
-======================================
+=================================
 
 Requirements
 
@@ -25,4 +25,18 @@ Instructions
 14. Create a Pull Request to integrate the fixed code back into the master repository. The Pull Request will ultimately 
     not be merged but will signal your completion of the skills assessment.
 
-Please ask for clarification if you have a question. Guessing an answer to an ambiguous directive will count against you.
+
+
+Changes which are done :
+
+1. Installed needed dependencies by run composer.json
+2. Modified the following code issues 
+
+	- Missed parenthesis at line 22 for getPort function.
+	- Missed closing culry brace for logging class (logging.php line 8)
+	- Missed comma(,) at line 76 in question.php
+3. I have checked with the PSR-1 & PSR-2 .here code looks follow these rules.
+4. I don't aware of the unit testing.I did not test the script.
+
+Note : Here I did not find any output,when executing the boot.php file
+

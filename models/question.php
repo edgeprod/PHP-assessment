@@ -14,8 +14,9 @@ class Question
     protected $tableName = 'questions';
     const      TABLENAME = 'questions';
 
-    public function __construct($questionId, Database $db)
+    public function __construct($questionId,  $db)
     {
+	
         $sql  = "SELECT * FROM `$this->tableName WHERE `id` = '" . $questionId . "' LIMIT 1;";
 
         $result = $db->getArray($sql);
@@ -73,7 +74,7 @@ class Question
     {
         $columns = array(
             'name',
-            'text'
+            'text',
             'answer'
         );
 
