@@ -1,5 +1,5 @@
 Technical Skills Assessment (PHP)
-=================================
+======================================
 
 Requirements
 
