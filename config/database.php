@@ -1,48 +1,41 @@
 <?php
 
-namespace interview;
+namespace Interview;
 
-class Config_Database
+class ConfigDatabase
 {
-
-    private $credentials = array(
+    private $credentials = [
         'host'     => 'localhost',
-        'port'     => NULL,
-        'database' => 'interview',
-        'user'     => 'questions',
-        'pass'     => 'answers'
-    );
+        'port'     => 80,
+        'database' => 'php_assessment',
+        'user'     => 'root',
+        'pass'     => '',
+    ];
 
-    public function getHost()
+    public function getHost(): string
     {
         return $this->credentials['host'];
     }
-    //--------------------------------------------------------------------------
 
-
-    public function getPort{
+    public function getPort(): ?int
+    {
         return $this->credentials['port'];
     }
-    //--------------------------------------------------------------------------
 
-
-    public function getDatabase()
+    public function getDatabase(): string
     {
         return $this->credentials['database'];
     }
-    //--------------------------------------------------------------------------
 
-
-    public function getUser()
+    public function getUser(): string
     {
         return $this->credentials['user'];
     }
-    //--------------------------------------------------------------------------
 
-
-    public function getPass()
+    public function getPass(): string
     {
         return $this->credentials['pass'];
     }
-    //--------------------------------------------------------------------------
 }
+
+// EOF

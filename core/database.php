@@ -1,54 +1,43 @@
 <?php
 
-namespace interview;
+namespace Interview;
 
-class Database {
+class Database
+{
     protected $link;
     protected $connected;
 
-    public function __construct() {
-        $credentials = new Config_Database();
+    public function __construct() 
+    {
+        $credentials = new ConfigDatabase();
 
         try {
             $this->link = new \PDO(
-                'mysql:host=' . $credentials['host'] . 'dbname=' . $credentials['database'],
+                'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase(),
                 $credentials->getUser(),
                 $credentials->getPass(),
-                array(
+                [
                     \PDO::ATTR_EMULATE_PREPARES => false,
-                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION)
+                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION,
+                ]
             );
         } catch (\PDOException $e) {
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
-    //--------------------------------------------------------------------------
 
-
-    public function insert($tableName, $columns, $data, $ignore = false)
+    public function insert(string $tableName, array $columns, array $data, bool $ignore = false): void
     {
-        $statement  = "INSERT";
+        $statement = "INSERT";
 
         if ($ignore) {
             $statement .= " IGNORE";
         }
 
-        $statement .= " INTO `" . $tableName . "`";
-        $statement .= " (";
-
-        for ($x = 0; $x < sizeof($columns); $x++) {
-            if ($x > 0) { $statement .= ', '; }
-            $statement .= $columns[$x];
-        }
-
-        $statement .= ")";
-        $statement .= " values (";
-
-        for ($x = 0; $x < sizeof($data); $x++) {
-            if ($x > 0) { $statement .= ', '; }
-            $statement .= "?";
-        }
-
+        $statement .= " INTO `" . $tableName . "` (";
+        $statement .= implode(", ", $columns);
+        $statement .= ") VALUES (";
+        $statement .= implode(", ", array_fill(0, count($data), "?"));
         $statement .= ")";
 
         try {
@@ -58,46 +47,31 @@ class Database {
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
-    //--------------------------------------------------------------------------
 
-
-    public function updateOne($tableName, $column, $data, $where, $condition)
+    public function updateOne(string $tableName, string $column, $data, string $where, $condition): void
     {
-        $statement  = "UPDATE";
-
-        $statement .= " `" . $tableName . "`";
-        $statement .= " SET `";
-
-        $statement .= $column . "`";
-        $statement .= ' = ';
-        $statement .= "?";
-
-        $statement .= " WHERE `" . $where . "` = ?";
+        $statement = "UPDATE `" . $tableName . "` SET `" . $column . "` = ? WHERE `" . $where . "` = ?";
 
         try {
             $update = $this->link->prepare($statement);
-            $update->execute(array($data, $condition));
+            $update->execute([$data, $condition]);
         } catch (\PDOException $e) {
             Logging::logDBErrorAndExit($e->getMessage());
         }
     }
-    //--------------------------------------------------------------------------
 
-
-    public function getArray($statement)
+    public function getArray(string $statement): ?array
     {
         try {
             $sql = $this->link->query($statement);
             $results = $sql->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             Logging::logDBErrorAndExit($e->getMessage());
+            return null;
         }
 
-        if (!empty($results)) {
-            return false;
-        }
-
-        return $results;
+        return $results ?: false;
     }
-    //--------------------------------------------------------------------------
 }
+
+// EOF
