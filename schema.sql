@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,18 +21,17 @@
 
 DROP TABLE IF EXISTS `questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `questions` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `text` varchar(255) NOT NULL,
   `answer` text NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `name` (`name`),
-  KEY `text` (`text`),
-  KEY `created` (`created`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  KEY `idx_name` (`name`),
+  KEY `idx_created` (`created`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +40,10 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'MVC Principles','Explain MVC principles, and why they are important?','','2014-09-25 22:30:16'),(2,'Unit Testing','What constitutes a good unit test?','','2014-09-25 22:30:37'),(3,'Roadblocks','You are required to work with a huge chunk of code and you have no idea how it works and there’s no documentation and no tests. What steps do you take?','','2014-09-25 22:32:41');
+INSERT INTO `questions` VALUES 
+(1, 'MVC Principles', 'Explain MVC principles, and why they are important?', '', '2014-09-25 22:30:16'),
+(2, 'Unit Testing', 'What constitutes a good unit test?', '', '2014-09-25 22:30:37'),
+(3, 'Roadblocks', 'You are required to work with a huge chunk of code and you have no idea how it works and there’s no documentation and no tests. What steps do you take?', '', '2014-09-25 22:32:41');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
