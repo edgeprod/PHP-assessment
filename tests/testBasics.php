@@ -1,26 +1,23 @@
 <?php
 
-require_once __DIR__ . "/../boot.php";
+require_once __DIR__ . '/../boot.php';
 
-class BasicTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class TestBasics extends TestCase
 {
-    public function testConfigLoaded()
+    public function testConfigLoaded(): void
     {
-        $this->assertClassHasAttribute('credentials', '\interview\Config_Database');
+        $this->assertClassHasStaticAttribute('credentials', \Interview\ConfigDatabase::class);
     }
-    //--------------------------------------------------------------------------
 
-
-    public function testLoggingLoaded()
+    public function testLoggingLoaded(): void
     {
-        $this->assertInstanceOf('\interview\Logging', new \interview\Logging);
+        $this->assertInstanceOf(\interview\Logging::class, new \interview\Logging());
     }
-    //--------------------------------------------------------------------------
 
-
-    public function testDatabaseLoaded()
+    public function testDatabaseLoaded(): void
     {
-        $this->assertInstanceOf('\interview\Database', new \interview\Database);
+        $this->assertInstanceOf(\interview\Database::class, new \interview\Database());
     }
-    //--------------------------------------------------------------------------
 }
