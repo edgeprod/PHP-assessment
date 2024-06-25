@@ -1,28 +1,51 @@
-Technical Skills Assessment (PHP)
-=================================
+Error Encountered in PHPUnit Testing
+==============================================
 
-Requirements
+Error Message:
+-------------------------------------------------
+------------------------------------------------------
+PHPUnit 8.5.38 by Sebastian Bergmann and contributors.
 
-* Local development environment with PHP (5.4+) interpreter and MySQL (5.5+) server
+E                                                                   1 / 1 (100%)
 
-Instructions
+Time: 540 ms, Memory: 4.00 MB
 
-1. Create a Github account if you don’t have one already
-2. Send an email to jason at leadwrench dot com with the subject of “PHP Skills Assessment” and include your Github 
-   account ID in the body. You will have 2 hours to complete the assessment from the time you send this email.
-3. Fork the repository at: https://github.com/edgeprod/PHP-assessment into your account
-4. Pull your forked repository into your IDE
-5. Fix any PHP syntax errors you find. Errors have been intentionally placed in the code.
-6. Modify code to meet PSR-1 and PSR-2 code style guidelines. Do NOT incorporate PSR-0 or PSR-4, as required by PSR-1. 
-   Make use of self-documenting code principles where necessary. Identify and use other existing style conventions.
-7. Initialize and run Composer to get needed dependencies
-8. Create a MySQL database and import the ‘schema.sql’ file
-9. Update ‘config/database.php’ with credentials to access newly created database
-10. Run unit tests to see remaining failures
-11. Make needed changes so all unit tests pass, however do NOT change the unit tests in any way.
-12. Push ALL changes back to your forked repository, including database changes (into schema.sql)
-13. Replace that ‘README.md’ file with the output of all the unit tests passing
-14. Create a Pull Request to integrate the fixed code back into the master repository. The Pull Request will ultimately 
-    not be merged but will signal your completion of the skills assessment.
+There was 1 error:
 
-Please ask for clarification if you have a question. Guessing an answer to an ambiguous directive will count against you.
+1) Tests\DatabaseConnectionTest::testDatabaseConnection
+Error: Class "config\Config_Database" not found
+
+C:\Users\lenovo\source\repos\PHP-assessment\core\database.php:16
+C:\Users\lenovo\source\repos\PHP-assessment\tests\DatabaseConnectionTest.php:13
+
+ERRORS!
+Tests: 1, Assertions: 0, Errors: 1.
+
+
+Description:
+----------------------------------------------------------------------
+During the execution of PHPUnit tests in my project (PHP-assessment), an error occurred related to the class Config_Database not being found. This error specifically happened when PHPUnit attempted to run the DatabaseConnectionTest::testDatabaseConnection test method.
+
+Probable Causes:
+--------------------------------------------------------------------------
+Autoloading Issue: The autoloader might not be correctly configured to load the Config_Database class.
+Namespace Mismatch: There could be a mismatch between the namespace defined in Config_Database and where PHPUnit expects to find it.
+File Path or Name Issue: The file defining Config_Database might not exist or might be named differently than expected.
+
+
+Steps Taken to Resolve:
+------------------------------------------------------------
+1. Checked the composer.json for correct autoloading configurations.
+2. Verified the namespace and class name in Config_Database and DatabaseConnectionTest.php.
+3. Ran composer dump-autoload to regenerate autoload files.
+4. Reviewed the file path and ensured it matches the namespace structure.
+    Next Steps
+5. To resolve this issue, I will continue investigating the autoloading setup and namespace/class definitions to ensure that PHPUnit can locate the Config_Database class during testing.
+
+Additional Information:
+--------------------------------------------------------------
+1. PHPUnit Version: 8.5.38
+2. Project Path: C:\Users\lenovo\source\repos\PHP-assessment
+3. Affected Files:
+3.1 core\database.php
+3.2 tests\DatabaseConnectionTest.php
