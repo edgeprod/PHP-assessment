@@ -15,19 +15,15 @@ class Question
 
     public function __construct($questionId, Database $db)
     {
-        // Fixed the SQL syntax error by closing the backtick before table name
-        $sql = "SELECT * FROM `$this->tableName` WHERE `id` = '" . $questionId . "' LIMIT 1;";
+        $sql = "SELECT * FROM `" . $this->tableName . "` WHERE `id` = '" . $questionId . "' LIMIT 1;"; 
 
         $result = $db->getArray($sql);
 
-        // Added condition to check if result is not empty to avoid errors
-        if (!empty($result)) {
-            $this->id      = $questionId;
-            $this->name    = $result[0]['name'];
-            $this->text    = $result[0]['text'];
-            $this->answer  = $result[0]['answer'];
-            $this->created = $result[0]['created']; // Fixed array key from 'created' to $result[0]['created']
-        }
+        $this->id = $questionId;
+        $this->name = $result[0]['name'];
+        $this->text = $result[0]['text'];
+        $this->answer = $result[0]['answer'];
+        $this->created = $result[0]['created'];
     }
 
     public static function getNameById($questionId, Database $db)
@@ -43,12 +39,11 @@ class Question
         $sql = "SELECT `text` FROM `" . self::TABLENAME . "` WHERE `id` = '" . $questionId . "' LIMIT 1;";
         $result = $db->getArray($sql);
 
-        return $result[0]['text']; // Changed $this->text to $result[0]['text']
+        return $result[0]['text'];
     }
 
     public static function getAnswerById($questionId, Database $db)
     {
-        // Fixed the SQL syntax error by adding a backtick before self::TABLENAME
         $sql = "SELECT `answer` FROM `" . self::TABLENAME . "` WHERE `id` = '" . $questionId . "' LIMIT 1;";
         $result = $db->getArray($sql);
 
@@ -65,17 +60,17 @@ class Question
 
     public static function addQuestion($questionName, $questionText, $questionAnswer, Database $db)
     {
-        $columns = [
+        $columns = array(
             'name',
-            'text',
-            'answer' // Added missing comma here
-        ];
+            'text', 
+            'answer' 
+        );
 
-        $data = [
+        $data = array(
             $questionName,
             $questionText,
             $questionAnswer
-        ];
+        );
 
         $db->insert(self::TABLENAME, $columns, $data);
 

@@ -1,78 +1,35 @@
 <?php
 
-namespace interview;
+namespace config;
 
-class Database
+class Config_Database
 {
-    protected $link;
-    protected $connected;
+    private $credentials = array(
+        'host'     => 'localhost',
+        'port'     => 3306,
+        'database' => 'root',
+        'user'     => 'mandiseli',
+        'pass'     => '10/May/1989'
+    );
 
-    public function __construct()
+    public function getHost()
     {
-        $credentials = new Config_Database();
-
-        try {
-            $dsn = 'mysql:host=' . $credentials->getHost() . ';dbname=' . $credentials->getDatabase() . ';port=' . $credentials->getPort();
-            $this->link = new \PDO(
-                $dsn,
-                $credentials->getUser(),
-                $credentials->getPass(),
-                [
-                    \PDO::ATTR_EMULATE_PREPARES => false,
-                    \PDO::ATTR_ERRMODE          => \PDO::ERRMODE_EXCEPTION
-                ]
-            );
-        } catch (\PDOException $e) {
-            Logging::logDBErrorAndExit($e->getMessage());
-        }
+        return $this->credentials['host'];
     }
 
-    public function insert($tableName, $columns, $data, $ignore = false)
+    public function getPort()
     {
-        $statement = "INSERT";
-
-        if ($ignore) {
-            $statement .= " IGNORE";
-        }
-
-        $statement .= " INTO `" . $tableName . "`";
-        $statement .= " (`" . implode('`, `', $columns) . "`)";
-        $statement .= " VALUES (" . str_repeat('?, ', count($data) - 1) . "?)";
-
-        try {
-            $insert = $this->link->prepare($statement);
-            $insert->execute($data);
-        } catch (\PDOException $e) {
-            Logging::logDBErrorAndExit($e->getMessage());
-        }
+        return $this->credentials['port'];
     }
 
-    public function updateOne($tableName, $column, $data, $where, $condition)
+    public function getDatabase()
     {
-        $statement = "UPDATE `" . $tableName . "` SET `" . $column . "` = ? WHERE `" . $where . "` = ?";
-
-        try {
-            $update = $this->link->prepare($statement);
-            $update->execute([$data, $condition]);
-        } catch (\PDOException $e) {
-            Logging::logDBErrorAndExit($e->getMessage());
-        }
+        return $this->credentials['database'];
     }
 
-    public function getArray($statement, $parameters = [])
+    public function getUser()
     {
-        try {
-            $sql = $this->link->prepare($statement);
-            $sql->execute($parameters);
-            return $sql->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            Logging::logDBErrorAndExit($e->getMessage());
-        }
-
-        return false;
-    }
-}
-
+        return $this->credentials['user'];
     }
 
     public function getPass()
